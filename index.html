@@ -12,12 +12,9 @@
 :root{
   --paper:#EAEAE4;
   --ink:#17181A;
-  --ink-soft:#43474C;
-  --faint:#8A8E92;
+  --faint:#5E6267;
   --rule:#C9C9C1;
   --water:#17518C;
-  --fail:#A8371C;
-  --pass:#2C6B4E;
   --panel:#15171A;
 
   --disp:'Barlow Condensed',Impact,sans-serif;
@@ -47,6 +44,8 @@ body{
 .top-in b{font-weight:500;letter-spacing:.04em}
 .top-in a{color:var(--water);text-decoration:none}
 .top-in a:hover{text-decoration:underline}
+.top-in nav{display:flex;gap:20px}
+.top-in nav .here{color:var(--ink);text-decoration:none;cursor:default}
 
 /* opening */
 .open{padding-block:clamp(48px,8vw,88px) clamp(28px,4vw,40px)}
@@ -66,59 +65,63 @@ h1 span{color:var(--water)}
   font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
   display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between;
 }
-.log-top em{font-style:normal;color:#8C9298}
+.log-top em{font-style:normal;color:#9AA0A6}
 table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13.5px}
 td{padding:10px 18px;border-bottom:1px solid rgba(228,229,226,.07);vertical-align:baseline}
 tr:last-child td{border-bottom:0}
-td.when{color:#868C92;white-space:nowrap;width:1%}
+td.when{color:#9AA0A6;white-space:nowrap;width:1%}
 td.mark{width:1%;padding-inline:0 10px;font-size:15px;line-height:1}
-td.what{color:#C6CACE}
+td.what{color:#CDD1D5}
 td.what b{font-weight:500}
-tr.p .mark,tr.p .what b{color:#5FB88C}
-tr.h .mark,tr.h .what b{color:#E0A63F}
-tr.f .mark,tr.f .what b{color:#E0705A}
+tr.p .mark,tr.p .what b{color:#6DC79A}
+tr.h .mark,tr.h .what b{color:#EDB554}
+tr.f .mark,tr.f .what b{color:#EC8570}
 .log-sum{
   padding:15px 18px;border-top:1px solid rgba(228,229,226,.16);
-  font-family:var(--mono);font-size:13px;color:#868C92;
+  font-family:var(--mono);font-size:13px;color:#9AA0A6;
 }
 .log-sum b{color:#E4E5E2;font-weight:500}
 .caption{
-  margin-top:10px;font-family:var(--mono);font-size:11.5px;color:var(--faint);
+  margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--faint);
 }
 
 /* prose */
 .body{padding-bottom:clamp(48px,7vw,80px)}
 .body p{margin-top:20px;max-width:62ch}
-.body p:first-child{margin-top:0}
+.body p:first-of-type{margin-top:0}
 .lead-in{
   font-family:var(--disp);text-transform:uppercase;font-weight:700;
-  font-size:clamp(26px,4vw,40px);line-height:1;letter-spacing:0;
+  font-size:clamp(26px,4vw,40px);line-height:1;
   margin-bottom:26px;max-width:22ch;
 }
 strong{font-weight:600}
 
-/* work list */
+/* what I do */
 .work{border-top:1px solid var(--rule);padding-block:clamp(44px,6vw,72px)}
 .work dl{margin-top:26px;max-width:66ch}
 .work dt{
   font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;
-  color:var(--water);margin-top:26px;
+  color:var(--water);margin-top:34px;
 }
 .work dt:first-of-type{margin-top:0}
 .work dd{margin-top:6px}
-.work dd .note{color:var(--faint);font-family:var(--mono);font-size:13px}
+.work dd .note{
+  display:block;margin-top:12px;padding-top:11px;
+  border-top:1px solid var(--rule);
+  color:var(--faint);font-family:var(--mono);font-size:12.5px;line-height:1.6;
+  max-width:44ch;
+}
 
-/* close */
+/* contact */
 .close{border-top:1px solid var(--rule);padding-block:clamp(44px,6vw,72px)}
-.close p{max-width:56ch;margin-top:18px}
-.close .lines{margin-top:26px;font-family:var(--mono);font-size:15px;line-height:2}
+.close .lines{margin-top:22px;font-family:var(--mono);font-size:15.5px;line-height:2.1}
 .close a{color:var(--water);text-underline-offset:3px}
 
 /* foot */
 .foot{border-top:1px solid var(--rule)}
 .foot-in{
   padding-block:26px 44px;
-  font-family:var(--mono);font-size:11.5px;color:var(--faint);
+  font-family:var(--mono);font-size:12px;color:var(--faint);
   display:flex;flex-wrap:wrap;gap:4px 22px;
 }
 
@@ -135,7 +138,10 @@ strong{font-weight:600}
 <div class="top">
   <div class="page top-in">
     <b>Austin Growth Partners</b>
-    <span><a href="mailto:austingrowthpartners@gmail.com">austingrowthpartners@gmail.com</a></span>
+    <nav>
+      <a class="here" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+    </nav>
   </div>
 </div>
 
@@ -180,21 +186,23 @@ strong{font-weight:600}
   <p class="lead-in">What I actually do</p>
   <dl>
     <dt>First, I shop you</dt>
-    <dd>I call your line at different hours, submit your forms, and read your website and Google listing the way a customer would. You get the log, same as the one above. <span class="note">Free. It is how I decide whether I can help.</span></dd>
+    <dd>I call your line at different hours, submit your forms, and read your website and Google listing the way a customer would. You get the log, same as the one above.
+      <span class="note">Free. It is how I decide whether I can help.</span></dd>
 
     <dt>Then the audit</dt>
-    <dd>This one needs your numbers. How many calls you are really missing, what your Google listing is doing against the shops ranking above you, where the ad money is going. It ends with a plan for ninety days and what each piece of it is worth. <span class="note">$750, about a week. Credited back if you hire me after.</span></dd>
+    <dd>This one needs your numbers. How many calls you are really missing, what your Google listing is doing against the shops ranking above you, where the ad money is going. It ends with a plan for ninety days and what each piece of it is worth.
+      <span class="note">$750, about a week. Credited back if you hire me after.</span></dd>
 
     <dt>Then I fix it</dt>
-    <dd>Tracking, so nothing is a guess. Missed calls that text the person back on their own. A website that books instead of collecting messages nobody reads. Reviews on the platform that actually ranks you. More traffic comes last, once the bucket holds water. <span class="note">Scoped from the audit. Every account is in your name and stays yours.</span></dd>
+    <dd>Tracking, so nothing is a guess. Missed calls that text the person back on their own. A website that books instead of collecting messages nobody reads. Reviews on the platform that actually ranks you. More traffic comes last, once the bucket holds water.
+      <span class="note">Scoped from the audit. Every account is in your name and stays yours.</span></dd>
   </dl>
 </div>
 
 <div class="page close col">
-  <p class="lead-in">Let me shop you first</p>
-  <p>Send me your company name. I will call your line, fill out your form, and send you the log, whether or not we ever work together. If there is nothing wrong, I will tell you that instead.</p>
+  <p class="lead-in">Get in touch</p>
   <div class="lines">
-    <a href="mailto:austingrowthpartners@gmail.com?subject=Shop%20my%20business">austingrowthpartners@gmail.com</a><br>
+    <a href="mailto:austingrowthpartners@gmail.com">austingrowthpartners@gmail.com</a><br>
     <a href="tel:+13107738251">310 773 8251</a>
   </div>
 </div>
