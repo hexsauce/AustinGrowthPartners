@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Austin Growth Partners — I call your business before I call you</title>
+<meta name="description" content="I mystery-shop Austin home service businesses, then show the owner exactly where their leads are leaking. Phone, forms, Google listing, ad spend.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#101820;
+  --ink-2:#1A242E;
+  --ink-3:#28343F;
+  --paper:#F2F3F1;
+  --slate-dk:#5A6572;
+  --amber:#F0A22E;
+  --red:#D8503A;
+  --green:#3E9C74;
+  --rule:rgba(242,243,241,.12);
+
+  --display:'Barlow Condensed',Impact,sans-serif;
+  --body:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  --pad:clamp(20px,5vw,72px);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+::selection{background:var(--amber);color:var(--ink)}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+
+.wrap{max-width:1180px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+/* top bar */
+.bar{
+  border-bottom:1px solid var(--rule);
+  position:sticky;top:0;z-index:20;
+  background:rgba(16,24,32,.92);
+  backdrop-filter:blur(8px);
+}
+.bar-in{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding-block:13px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.13em;text-transform:uppercase;
+}
+.mark{display:flex;align-items:center;gap:10px;font-weight:600}
+.dot{
+  width:9px;height:9px;border-radius:50%;background:var(--amber);
+  animation:beat 2.6s ease-out infinite;
+}
+@keyframes beat{
+  0%{box-shadow:0 0 0 0 rgba(240,162,46,.5)}
+  70%{box-shadow:0 0 0 9px rgba(240,162,46,0)}
+  100%{box-shadow:0 0 0 0 rgba(240,162,46,0)}
+}
+.bar a.tel{color:var(--amber);text-decoration:none;font-weight:600}
+.bar a.tel:hover{text-decoration:underline}
+.bar .loc{color:var(--slate-dk);display:none}
+@media(min-width:780px){.bar .loc{display:block}}
+
+/* hero */
+.hero{padding-block:clamp(48px,9vw,104px) clamp(40px,6vw,72px)}
+.eyebrow{
+  font-family:var(--mono);font-size:12px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:22px;
+}
+h1{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(52px,10.5vw,124px);
+  line-height:.87;
+  letter-spacing:-.015em;
+  text-transform:uppercase;
+  max-width:15ch;
+}
+h1 em{font-style:normal;color:var(--amber)}
+.lede{
+  margin-top:28px;max-width:56ch;
+  font-size:clamp(17px,2.1vw,20px);color:#CDD4DA;
+}
+
+/* the log — signature element */
+.log{
+  margin-top:clamp(40px,6vw,64px);
+  border:1px solid var(--rule);
+  background:linear-gradient(180deg,var(--ink-2),var(--ink));
+  border-radius:3px;
+  overflow:hidden;
+}
+.log-head{
+  display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;
+  justify-content:space-between;
+  padding:14px 18px;
+  border-bottom:1px solid var(--rule);
+  background:var(--ink-3);
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;
+}
+.log-head b{font-weight:600;color:var(--paper)}
+.log-head span{color:var(--slate-dk)}
+
+.log-rows{font-family:var(--mono);font-size:13.5px}
+.row{
+  display:grid;
+  grid-template-columns:76px 18px 1fr;
+  gap:12px;align-items:baseline;
+  padding:11px 18px;
+  border-bottom:1px solid rgba(242,243,241,.06);
+  opacity:0;transform:translateY(5px);
+  animation:in .42s cubic-bezier(.2,.7,.3,1) forwards;
+}
+.row:last-child{border-bottom:0}
+@keyframes in{to{opacity:1;transform:none}}
+.row .t{color:var(--slate-dk)}
+.row .s{font-size:15px;line-height:1}
+.row .d{color:#C3CBD2}
+.ok  .s{color:var(--green)}
+.mid .s{color:var(--amber)}
+.bad .s{color:var(--red)}
+.ok  .d b{color:var(--green);font-weight:500}
+.mid .d b{color:var(--amber);font-weight:500}
+.bad .d b{color:var(--red);font-weight:500}
+
+.log-foot{
+  padding:16px 18px;
+  border-top:1px solid var(--rule);
+  background:var(--ink-3);
+  font-family:var(--mono);font-size:13px;
+  display:flex;flex-wrap:wrap;gap:6px 22px;
+}
+.log-foot i{font-style:normal;color:var(--slate-dk)}
+.log-foot b{color:var(--amber);font-weight:600}
+
+@media(prefers-reduced-motion:reduce){
+  .row{animation:none;opacity:1;transform:none}
+  .dot{animation:none}
+}
+
+/* sections */
+section{padding-block:clamp(64px,9vw,120px);border-top:1px solid var(--rule)}
+.tag{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--slate-dk);margin-bottom:20px;
+}
+h2{
+  font-family:var(--display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(30px,5.2vw,58px);line-height:.95;letter-spacing:-.01em;
+  max-width:20ch;
+}
+.sub{margin-top:18px;max-width:58ch;color:#C3CBD2}
+
+.finds{
+  margin-top:clamp(30px,5vw,52px);
+  display:grid;gap:1px;background:var(--rule);
+  border:1px solid var(--rule);
+}
+@media(min-width:820px){.finds{grid-template-columns:repeat(3,1fr)}}
+.find{background:var(--ink);padding:26px 24px 28px}
+.find .n{
+  font-family:var(--mono);font-size:38px;font-weight:600;
+  color:var(--amber);line-height:1;letter-spacing:-.02em;
+}
+.find h3{
+  font-family:var(--body);font-size:16px;font-weight:600;
+  margin:14px 0 8px;
+}
+.find p{font-size:15px;color:#AEB8C0;line-height:1.55}
+
+/* steps */
+.steps{margin-top:clamp(30px,5vw,52px);display:grid;gap:2px;background:var(--rule);border:1px solid var(--rule)}
+.step{
+  background:var(--ink);padding:24px;
+  display:grid;gap:6px 22px;align-items:start;
+}
+@media(min-width:720px){.step{grid-template-columns:64px 1fr}}
+.step .k{
+  font-family:var(--mono);font-size:12px;letter-spacing:.12em;
+  color:var(--amber);padding-top:4px;
+}
+.step h3{font-family:var(--body);font-size:17px;font-weight:600}
+.step p{font-size:15.5px;color:#AEB8C0;margin-top:5px;max-width:62ch}
+.step .price{
+  font-family:var(--mono);font-size:13px;color:var(--slate-dk);margin-top:9px;
+}
+
+/* fit */
+.fit{margin-top:36px;display:grid;gap:26px}
+@media(min-width:760px){.fit{grid-template-columns:1fr 1fr;gap:44px}}
+.fit ul{list-style:none}
+.fit li{
+  padding:9px 0 9px 24px;position:relative;
+  border-bottom:1px solid rgba(242,243,241,.07);
+  font-size:15.5px;color:#C3CBD2;
+}
+.fit li:before{
+  position:absolute;left:0;top:9px;
+  font-family:var(--mono);font-size:13px;
+}
+.yes li:before{content:'+';color:var(--green)}
+.no li:before{content:'—';color:var(--slate-dk)}
+.fit h3{
+  font-family:var(--mono);font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:6px;
+}
+.yes h3{color:var(--green)}
+.no h3{color:var(--slate-dk)}
+
+/* contact */
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.btn{
+  display:inline-block;text-decoration:none;
+  font-family:var(--mono);font-size:14px;letter-spacing:.08em;
+  text-transform:uppercase;font-weight:600;
+  padding:15px 26px;border-radius:2px;
+  transition:transform .14s ease,background .14s ease,border-color .14s ease,color .14s ease;
+}
+.btn-a{background:var(--amber);color:var(--ink)}
+.btn-a:hover{background:#FFB645;transform:translateY(-1px)}
+.btn-b{border:1px solid var(--rule);color:var(--paper)}
+.btn-b:hover{border-color:var(--amber);color:var(--amber)}
+
+footer{
+  border-top:1px solid var(--rule);
+  padding-block:40px 52px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.06em;
+  color:var(--slate-dk);
+}
+.foot-in{
+  display:grid;gap:28px;
+}
+@media(min-width:720px){
+  .foot-in{grid-template-columns:1fr auto;align-items:end;gap:40px}
+}
+.foot-name{
+  font-family:var(--display);font-size:24px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.01em;
+  color:var(--paper);line-height:1;margin-bottom:10px;
+}
+.foot-legal{max-width:38ch;line-height:1.8}
+.foot-contact{display:grid;gap:7px}
+@media(min-width:720px){.foot-contact{text-align:right}}
+.foot-contact a{color:var(--paper);text-decoration:none}
+.foot-contact a:hover{color:var(--amber)}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap bar-in">
+    <span class="mark"><span class="dot"></span>Austin Growth Partners</span>
+    <span class="loc">Austin, TX</span>
+    <a class="tel" href="tel:+13107738251">310·773·8251</a>
+  </div>
+</div>
+
+<header class="hero wrap">
+  <p class="eyebrow">Growth &amp; tech for home service businesses</p>
+  <h1>I call your business <em>before</em> I call you.</h1>
+  <p class="lede">
+    Most owners have never heard their own phone from the customer's side. I do — I call, I fill out the form,
+    I time the response. Then I show you where the jobs are going instead of to you.
+  </p>
+
+  <div class="log">
+    <div class="log-head">
+      <b>Mystery shop log — Austin plumbers</b>
+      <span>Water heater replacement · Aug 2–5, 2026</span>
+    </div>
+
+    <div class="log-rows">
+      <div class="row ok"  style="animation-delay:.10s"><span class="t">Sun 14:25</span><span class="s">●</span><span class="d">Answered in 5s, qualified the job, <b>texted a booking link</b></span></div>
+      <div class="row bad" style="animation-delay:.19s"><span class="t">Sun 14:30</span><span class="s">○</span><span class="d">Queue promised a 2-minute wait. At 3 minutes it <b>hung up</b></span></div>
+      <div class="row bad" style="animation-delay:.28s"><span class="t">Sun 14:41</span><span class="s">○</span><span class="d">Rang 20s, then <b>voicemail</b>. No service, no forwarding</span></div>
+      <div class="row bad" style="animation-delay:.37s"><span class="t">Sun 14:46</span><span class="s">○</span><span class="d">Hold, then "no one is available." <b>Voicemail never returned</b></span></div>
+      <div class="row bad" style="animation-delay:.46s"><span class="t">Sun 15:49</span><span class="s">○</span><span class="d">Website form submitted. <b>No reply — 60+ hours</b></span></div>
+      <div class="row ok"  style="animation-delay:.55s"><span class="t">Wed 10:25</span><span class="s">●</span><span class="d">Answered in 27s. Call dropped — <b>they called back and booked me</b></span></div>
+      <div class="row bad" style="animation-delay:.64s"><span class="t">Wed 10:56</span><span class="s">○</span><span class="d">Owner's line. <b>Voicemail</b> — "currently on another call"</span></div>
+      <div class="row bad" style="animation-delay:.73s"><span class="t">Wed 12:23</span><span class="s">○</span><span class="d">Recording said text us instead, then <b>ended the call</b></span></div>
+      <div class="row mid" style="animation-delay:.82s"><span class="t">Wed 12:39</span><span class="s">◐</span><span class="d">Answered fast, asked the right questions, <b>never took my number</b></span></div>
+      <div class="row mid" style="animation-delay:.91s"><span class="t">Wed 13:26</span><span class="s">◐</span><span class="d">Offered to schedule, <b>never took my number</b></span></div>
+    </div>
+
+    <div class="log-foot">
+      <span><i>Shops called</i> <b>8</b></span>
+      <span><i>Reached a human</i> <b>6</b></span>
+      <span><i>Actually captured the lead</i> <b>2</b></span>
+    </div>
+  </div>
+</header>
+
+<section class="wrap">
+  <p class="tag">What the calls turned up</p>
+  <h2>The leak is almost never the marketing</h2>
+  <p class="sub">
+    Every shop in that log spends money to make the phone ring. Six of eight answered it.
+    Two ended the call with a way to reach the customer back.
+  </p>
+
+  <div class="finds">
+    <div class="find">
+      <div class="n">6 / 8</div>
+      <h3>Answered, then let it go</h3>
+      <p>Fast pickup, right questions, no name and no number. The caller hangs up and there's nothing left to follow up on.</p>
+    </div>
+    <div class="find">
+      <div class="n">0 / 8</div>
+      <h3>Could tell you what works</h3>
+      <p>Not one had analytics connecting a booked job back to the channel that produced it. The ad spend is a guess.</p>
+    </div>
+    <div class="find">
+      <div class="n">60 hrs</div>
+      <h3>Slowest form response</h3>
+      <p>A water heater replacement — thousands of dollars — sat in a website form over a weekend and into Wednesday.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="tag">How it works</p>
+  <h2>Shop it, measure it, fix it</h2>
+  <p class="sub">In that order. I'd rather stop you losing the calls you already get than sell you more of them.</p>
+
+  <div class="steps">
+    <div class="step">
+      <span class="k">01</span>
+      <div>
+        <h3>The shop</h3>
+        <p>I call your line at different hours, submit your forms, and read your site and Google listing the way a customer would. You get the log — every timestamp, every outcome.</p>
+        <p class="price">Free. It's how I decide whether I can help.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="k">02</span>
+      <div>
+        <h3>The audit</h3>
+        <p>With access to your numbers: how many calls you're actually missing, what your Google listing is doing against the shops beating you, where the ad money goes. Ends with a 90-day plan and what each item is worth.</p>
+        <p class="price">$750 · about a week · credited if you hire me after</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="k">03</span>
+      <div>
+        <h3>The build</h3>
+        <p>Call tracking so nothing is a guess. Missed calls that text back on their own. A site that books instead of collecting messages. Reviews on the platform that actually ranks you. Then, and only then, more traffic.</p>
+        <p class="price">Scoped from the audit. You own every account.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="tag">Fit</p>
+  <h2>Who this is for</h2>
+
+  <div class="fit">
+    <div class="yes">
+      <h3>Good fit</h3>
+      <ul>
+        <li>Plumbing, HVAC, electrical, pest — Austin and the surrounding towns</li>
+        <li>Two to fifteen trucks, owner still answers the phone sometimes</li>
+        <li>Already spending on Yelp, HomeAdvisor, Angi or Google and unsure what it returns</li>
+        <li>Wants the actual number, not a report that says things went up</li>
+      </ul>
+    </div>
+    <div class="no">
+      <h3>Not a fit</h3>
+      <ul>
+        <li>You want more leads but can't run the ones you already have</li>
+        <li>You want a report that looks good rather than one that's true</li>
+        <li>You want someone else to hold your accounts. I set them up in your name and you keep them</li>
+        <li>National, e-commerce, or anything without a phone that rings</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="tag">Start here</p>
+  <h2>Let me shop you first</h2>
+  <p class="sub">
+    Send me your company name. I'll call your line, fill out your form, and send you the log —
+    whether or not we ever work together. If there's nothing there, I'll tell you that too.
+  </p>
+  <div class="cta-row">
+    <a class="btn btn-a" href="mailto:austingrowthpartners@gmail.com?subject=Shop%20my%20business">Email me</a>
+    <a class="btn btn-b" href="tel:+13107738251">310·773·8251</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div>
+      <div class="foot-name">Austin Growth Partners</div>
+      <div class="foot-legal">
+        Austin, Texas &nbsp;·&nbsp; A division of EZPZ Solutions LLC
+      </div>
+    </div>
+    <div class="foot-contact">
+      <a href="mailto:austingrowthpartners@gmail.com">austingrowthpartners@gmail.com</a>
+      <a href="tel:+13107738251">310·773·8251</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
